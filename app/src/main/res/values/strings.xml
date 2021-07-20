@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">Agent personal de calatorie</string>
+    <string name="feedback_pentru_serviciile_curente">Feedback pentru serviciile curente</string>
+    <string name="textview">TextView</string>
+    <string name="trimite_feedback">Trimite feedback</string>
+    <string name="opinia_dvs">Introduceti opinia dvs...</string>
+    <string name="un_rezumat_al_experientei_dvs_in_acest_loc">Un rezumat al experientei dvs in acest loc:</string>
+    <string name="acordati_o_nota_de_la_1_la_5_serviciului">Acordati o nota de la 1 la 5 serviciului</string>
+    <string name="calificativul_serviciului">Calificativul serviciului:</string>
+    <string name="modalitati_de_transport">Modalitati de transport</string>
+    <string name="alege_punct_de_pornire">Alege punct de pornire:</string>
+    <string name="explorati_rute">Explorati rute</string>
+    <string name="adresa_prea_scurta">Adresa prea scurta!</string>
+    <string name="introduceti_destinatia">Introduceti destinatia!</string>
+    <string name="introduceti_punctul_de_plecare">Introduceti punctul de plecare!</string>
+    <string name="adresa_plecare">Adresa plecare</string>
+    <string name="optiuni_de_transport_pentru_ruta">Optiuni de transport pentru ruta</string>
+    <string name="monday">Monday</string>
+    <string-array name="gradesArray">
+        <item> 1 - dezastruos, nu recomand</item>
+        <item> 2 - ultima vizita aici </item>
+        <item> 3 - umm, se putea si mai bine </item>
+        <item> 4 - chiar mi-a placut </item>
+        <item> 5 - ador, garantat mai revin </item>
+    </string-array>
+    <string-array name="restaurantsArraySibiu">
+        <item>La cuptor</item>
+        <item>Crama Sibiului Vechi</item>
+        <item>Pardon Cafe si Bistro Sibiu</item>
+        <item>Restaurant Hermania</item>
+    </string-array>
+    <string-array name="restaurantsArrayCluj">
+        <item>KFC</item>
+        <item>Mc Donalds</item>
+        <item>Subway</item>
+        <item>Mama manu</item>
+        <item>Via restaurant</item>
+        <item>Roata</item>
+    </string-array>
+    <string-array name="durataDropdown">
+        <item> 15 min </item>
+        <item> 1 ora </item>
+        <item> 24 ore </item>
+        <item> 1 saptamana </item>
+        <item> pana opresc </item>
+    </string-array>
+</resources>

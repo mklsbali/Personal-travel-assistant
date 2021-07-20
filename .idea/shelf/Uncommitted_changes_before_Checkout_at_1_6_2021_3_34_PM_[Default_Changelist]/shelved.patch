@@ -1,0 +1,468 @@
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"com.example.agentpersonalcalatorie\">\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/AppTheme\">\r\n        <activity android:name=\".MenuActivity\" />\r\n        <activity android:name=\".FeedbackActivity\" />\r\n        <activity android:name=\".TransportActivity\" />\r\n        <activity android:name=\".TransportOptionsActivity\" />\r\n        <activity android:name=\".RestaurantActivity\" />\r\n        <activity android:name=\".Restaurant2Activity\" />\r\n        <activity android:name=\".MainActivity\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision 549aaef22dd600dc4110f437b5bae24d57d89c0f)
++++ app/src/main/AndroidManifest.xml	(date 1609931127176)
+@@ -15,6 +15,8 @@
+         <activity android:name=".TransportOptionsActivity" />
+         <activity android:name=".RestaurantActivity" />
+         <activity android:name=".Restaurant2Activity" />
++        <activity android:name=".Restaurant3Activity" />
++        <activity android:name=".Restaurant4Activity" />
+         <activity android:name=".MainActivity">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+Index: app/src/main/java/com/example/agentpersonalcalatorie/Restaurant2Activity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.agentpersonalcalatorie\r\n\r\nimport android.content.Intent\r\nimport android.os.Bundle\r\nimport android.view.View\r\nimport android.widget.*\r\nimport androidx.appcompat.app.AppCompatActivity\r\n\r\nclass Restaurant2Activity : AppCompatActivity(){\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.restaurant2)\r\n        fillDropdownWithValues()\r\n        var restaurantB=findViewById<Button>(R.id.restaurantB);\r\n        restaurantB.setOnClickListener({\r\n            Toast.makeText(applicationContext,\"Restaurant selected\",Toast.LENGTH_SHORT).show()\r\n        })\r\n\r\n    }\r\n    private fun fillDropdownWithValues() {\r\n        val spinner: Spinner = findViewById(R.id.restaurantList)\r\n        // creez un ArrayAdapter folosind array-ul ala de string-uri din strings.xml si layout-u default pentru spinner (dropdown)\r\n        ArrayAdapter.createFromResource(\r\n            this,\r\n            R.array.restaurantsArrayCluj,\r\n            android.R.layout.simple_spinner_item\r\n        ).also { adapter ->\r\n            // ce layout folosesc cand apare lista de variante\r\n            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)\r\n            // aplic adaptoru la elementu de tip spinner (dropdown)\r\n            spinner.adapter = adapter\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/agentpersonalcalatorie/Restaurant2Activity.kt	(revision 549aaef22dd600dc4110f437b5bae24d57d89c0f)
++++ app/src/main/java/com/example/agentpersonalcalatorie/Restaurant2Activity.kt	(date 1609767114194)
+@@ -13,9 +13,13 @@
+         fillDropdownWithValues()
+         var restaurantB=findViewById<Button>(R.id.restaurantB);
+         restaurantB.setOnClickListener({
+-            Toast.makeText(applicationContext,"Restaurant selected",Toast.LENGTH_SHORT).show()
++            restaurant3View();
+         })
+ 
++    }
++    private fun restaurant3View() {
++        val intent = Intent(this, Restaurant3Activity::class.java)
++        startActivity(intent)
+     }
+     private fun fillDropdownWithValues() {
+         val spinner: Spinner = findViewById(R.id.restaurantList)
+Index: app/src/main/java/com/example/agentpersonalcalatorie/RestaurantActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.agentpersonalcalatorie\r\n\r\nimport android.content.Intent\r\nimport android.os.Bundle\r\nimport android.view.View\r\nimport android.widget.Button\r\nimport android.widget.EditText\r\nimport android.widget.TextView\r\nimport android.widget.Toast\r\nimport androidx.appcompat.app.AppCompatActivity\r\n\r\nclass RestaurantActivity : AppCompatActivity(){\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.restaurant1)\r\n\r\n        var error=findViewById<TextView>(R.id.errorRestaurant1);\r\n        error.visibility= View.GONE;\r\n        var locationB=findViewById<Button>(R.id.locationRestaurantB);\r\n        locationB.setOnClickListener({\r\n            val restaurant=findViewById<EditText>(R.id.locationRestaurantText)\r\n            if (restaurant.text.isEmpty())\r\n            {\r\n                error.visibility=View.VISIBLE;\r\n            }\r\n            else{\r\n                error.visibility=View.GONE;\r\n                restaurant2View();\r\n            }\r\n        })\r\n\r\n    }\r\n    private fun restaurant2View() {\r\n        val intent = Intent(this, Restaurant2Activity::class.java)\r\n        startActivity(intent)\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/agentpersonalcalatorie/RestaurantActivity.kt	(revision 549aaef22dd600dc4110f437b5bae24d57d89c0f)
++++ app/src/main/java/com/example/agentpersonalcalatorie/RestaurantActivity.kt	(date 1609764546047)
+@@ -1,5 +1,6 @@
+ package com.example.agentpersonalcalatorie
+ 
++import android.content.DialogInterface
+ import android.content.Intent
+ import android.os.Bundle
+ import android.view.View
+@@ -7,6 +8,7 @@
+ import android.widget.EditText
+ import android.widget.TextView
+ import android.widget.Toast
++import androidx.appcompat.app.AlertDialog
+ import androidx.appcompat.app.AppCompatActivity
+ 
+ class RestaurantActivity : AppCompatActivity(){
+@@ -34,5 +36,19 @@
+         val intent = Intent(this, Restaurant2Activity::class.java)
+         startActivity(intent)
+     }
++    override fun onBackPressed() {
++        val builder = AlertDialog.Builder(this)
++        builder.setMessage("Renuntati la rezervare restaurant?")
++            .setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, id ->
++                finish()
++                val intent = Intent(this, MenuActivity::class.java)
++                startActivity(intent)
++            })
++            .setNegativeButton(
++                "No",
++                DialogInterface.OnClickListener { dialog, id -> dialog.cancel() })
++        builder.create().show()
++
++    }
+ 
+ }
+\ No newline at end of file
+Index: app/src/main/java/com/example/agentpersonalcalatorie/Restaurant3Activity.kt
+===================================================================
+--- app/src/main/java/com/example/agentpersonalcalatorie/Restaurant3Activity.kt	(date 1609931599414)
++++ app/src/main/java/com/example/agentpersonalcalatorie/Restaurant3Activity.kt	(date 1609931599414)
+@@ -0,0 +1,145 @@
++package com.example.agentpersonalcalatorie
++
++import android.app.DatePickerDialog
++import android.app.TimePickerDialog
++import android.content.Intent
++import android.os.Bundle
++import android.text.format.DateFormat;
++import android.view.MotionEvent
++import android.view.View
++import android.widget.*
++import androidx.appcompat.app.AppCompatActivity
++import java.util.*
++
++class Restaurant3Activity : AppCompatActivity(), DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener{
++
++    lateinit var dateTime: EditText
++    var day = 0
++    var month: Int = 0
++    var year: Int = 0
++    var hour: Int = 0
++    var minute: Int = 0
++    var myDay = 0
++    var myMonth: Int = 0
++    var myYear: Int = 0
++    var myHour: Int = 0
++    var myMinute: Int = 0
++    lateinit var datePickerDialog:DatePickerDialog
++
++    override fun onCreate(savedInstanceState: Bundle?) {
++        super.onCreate(savedInstanceState)
++        setContentView(R.layout.restaurant3)
++        var button = findViewById<Button>(R.id.maiDeparteLaMeniuriB)
++        findViewById<TextView>(R.id.nrOfPersonsError).visibility=View.GONE
++        findViewById<TextView>(R.id.dataOraError).visibility=View.GONE
++        dateTime=findViewById<EditText>(R.id.dataora)
++
++        dateTime.setOnTouchListener(object : View.OnTouchListener {
++            override fun onTouch(v: View, m: MotionEvent): Boolean {
++                val calendar: Calendar = Calendar.getInstance()
++                day = calendar.get(Calendar.DAY_OF_MONTH)
++                month = calendar.get(Calendar.MONTH)
++                year = calendar.get(Calendar.YEAR)
++                datePickerDialog =
++                    DatePickerDialog(this@Restaurant3Activity, this@Restaurant3Activity, year, month,day)
++                datePickerDialog.show()
++
++                return true
++            }
++        })
++        button.setOnClickListener {
++            onClickInainteButton()
++        }
++    }
++
++    private fun onClickInainteButton() {
++        var err1:Boolean
++        var err2:Boolean
++
++        var nrOfPErsons = findViewById<EditText>(R.id.nrOfPersons);
++
++        var errorNrOfPersons = findViewById<TextView>(R.id.nrOfPersonsError);
++        var errorDataOra= findViewById<TextView>(R.id.dataOraError);
++
++        if (nrOfPErsons.text.isEmpty())
++        {
++            errorNrOfPersons.text="!! Acest camp este obligatorie !!"
++            errorNrOfPersons.visibility=View.VISIBLE
++            err1=true
++        }
++        else if (nrOfPErsons.text.toString().toInt()<1 || nrOfPErsons.text.toString().toInt()>100)
++        {
++            errorNrOfPersons.text="!! Numarul de persoane trebuie sa fie intre 1 si 100 !!"
++            errorNrOfPersons.visibility=View.VISIBLE
++            err1=true
++        }
++        else
++        {
++            errorNrOfPersons.visibility=View.GONE
++            err1=false
++        }
++
++
++        val calendar: Calendar = Calendar.getInstance()
++        var currentYear=calendar.get(Calendar.YEAR)
++        if (currentYear>myYear)
++        {
++            errorDataOra.text="!! Rezervarea trebuie sa fie in anul curent !!"
++            errorDataOra.visibility=View.VISIBLE
++            err2=true
++        }
++        else
++        {
++            errorDataOra.visibility=View.GONE
++            err2=false
++        }
++        if (!err1 && !err2)
++        {
++            val intent = Intent(this, Restaurant4Activity::class.java)
++            startActivity(intent)
++        }
++
++    }
++
++    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
++        myDay = day
++        myYear = year
++        myMonth = month+1
++        val calendar: Calendar = Calendar.getInstance()
++        hour = calendar.get(Calendar.HOUR)
++        minute = calendar.get(Calendar.MINUTE)
++        val timePickerDialog = TimePickerDialog(this@Restaurant3Activity, this@Restaurant3Activity, hour, minute, DateFormat.is24HourFormat(this))
++        timePickerDialog.show()
++    }
++
++    override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
++
++        myHour = hourOfDay
++        myMinute = minute
++        var myMonthS:String
++        var myDayS:String
++        var myHourS:String
++        var myMinuteS:String
++        if (myMonth<10)
++            myMonthS="0"+myMonth.toString()
++        else
++            myMonthS=myMonth.toString()
++
++        if (myDay<10)
++            myDayS="0"+myDay.toString()
++        else
++            myDayS=myDay.toString()
++
++        if (myHour<10)
++            myHourS="0"+myHour.toString()
++        else
++            myHourS=myHour.toString()
++
++        if (myMinute<10)
++            myMinuteS="0"+myMinute.toString()
++        else
++            myMinuteS=myMinute.toString()
++
++        dateTime.setText(myYear.toString()+"/"+myMonthS+"/"+myDayS+"  "+myHourS+":"+myMinuteS)
++    }
++}
+\ No newline at end of file
+Index: app/src/main/res/layout/restaurant_list_item.xml
+===================================================================
+--- app/src/main/res/layout/restaurant_list_item.xml	(date 1609939514354)
++++ app/src/main/res/layout/restaurant_list_item.xml	(date 1609939514354)
+@@ -0,0 +1,35 @@
++<?xml version="1.0" encoding="utf-8"?>
++<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:orientation="vertical" android:layout_width="match_parent"
++    android:layout_height="match_parent">
++
++    <TextView
++        android:id="@+id/menuName"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:textSize="20sp"
++        android:textStyle="bold"
++        android:text="Numele meniului" />
++
++    <ImageView
++        android:id="@+id/imageView2"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        tools:srcCompat="@tools:sample/avatars" />
++
++    <TextView
++        android:id="@+id/menuDescription"
++        android:layout_width="match_parent"
++        android:textSize="15sp"
++        android:layout_height="wrap_content"
++        android:text="Menu description" />
++    <CheckBox
++        android:id="@+id/menuSelected"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:text="Pret: " />
++
++
++</LinearLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/restaurant_list.xml
+===================================================================
+--- app/src/main/res/layout/restaurant_list.xml	(date 1609939902555)
++++ app/src/main/res/layout/restaurant_list.xml	(date 1609939902555)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout
++    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
++    android:layout_height="match_parent">
++
++    <ListView
++        android:id ="@+id/restaurantListView"
++        android:layout_width="match_parent"
++        android:layout_height="match_parent" />
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/example/agentpersonalcalatorie/Restaurant4Activity.kt
+===================================================================
+--- app/src/main/java/com/example/agentpersonalcalatorie/Restaurant4Activity.kt	(date 1609931127197)
++++ app/src/main/java/com/example/agentpersonalcalatorie/Restaurant4Activity.kt	(date 1609931127197)
+@@ -0,0 +1,11 @@
++package com.example.agentpersonalcalatorie
++
++import android.os.Bundle
++import androidx.appcompat.app.AppCompatActivity
++
++class Restaurant4Activity :AppCompatActivity() {
++    override fun onCreate(savedInstanceState: Bundle?) {
++        super.onCreate(savedInstanceState)
++        setContentView(R.layout.restaurant4)
++    }
++}
+\ No newline at end of file
+Index: app/src/main/res/layout/restaurant4.xml
+===================================================================
+--- app/src/main/res/layout/restaurant4.xml	(date 1609930907762)
++++ app/src/main/res/layout/restaurant4.xml	(date 1609930907762)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout
++    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
++    android:layout_height="match_parent">
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/restaurant3.xml
+===================================================================
+--- app/src/main/res/layout/restaurant3.xml	(date 1609925625747)
++++ app/src/main/res/layout/restaurant3.xml	(date 1609925625747)
+@@ -0,0 +1,138 @@
++<?xml version="1.0" encoding="utf-8"?>
++<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    android:orientation="vertical" android:layout_width="match_parent"
++    android:layout_height="match_parent">
++
++    <TextView
++        android:id="@+id/textView2"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:textSize="18sp"
++        android:textStyle="bold"
++        android:layout_marginStart="10dp"
++        android:text="Numarul de persoane" />
++
++    <EditText
++        android:id="@+id/nrOfPersons"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:ems="10"
++        android:layout_marginStart="10dp"
++        android:inputType="number" />
++
++    <TextView
++        android:id="@+id/nrOfPersonsError"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="10dp"
++        android:textColor="@color/colorRed"
++        android:textStyle="bold"
++        android:text="nrOfPersonsError" />
++
++    <TextView
++        android:id="@+id/textwiew"
++        android:layout_width="match_parent"
++        android:textSize="18sp"
++        android:layout_marginStart="10dp"
++        android:textStyle="bold"
++        android:layout_height="wrap_content"
++        android:text="Data si ora" />
++
++    <EditText
++        android:id="@+id/dataora"
++        android:layout_width="match_parent"
++        android:layout_marginStart="10dp"
++        android:layout_height="wrap_content"
++
++        android:ems="10"
++        android:inputType="date" />
++
++    <TextView
++        android:id="@+id/dataOraError"
++        android:textColor="@color/colorRed"
++        android:textStyle="bold"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="10dp"
++        android:text="dataOraError" />
++
++    <TextView
++        android:id="@+id/textView6"
++        android:layout_width="match_parent"
++        android:textSize="18sp"
++        android:layout_marginStart="10dp"
++        android:textStyle="bold"
++        android:layout_height="wrap_content"
++        android:text="Asezarea mesei" />
++
++    <EditText
++        android:id="@+id/asezareaMesei"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:ems="10"
++        android:layout_marginStart="10dp"
++        android:inputType="text"
++        android:text="" />
++
++    <TextView
++        android:id="@+id/textw"
++        android:layout_width="match_parent"
++        android:textSize="18sp"
++        android:textStyle="bold"
++        android:layout_marginStart="10dp"
++        android:layout_height="wrap_content"
++        android:text="Durata de servire" />
++
++    <EditText
++        android:id="@+id/durtaDeServire"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:ems="10"
++        android:layout_marginStart="10dp"
++        android:inputType="text"
++        android:text="" />
++
++    <TextView
++        android:id="@+id/textView8"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:textSize="18sp"
++        android:textStyle="bold"
++        android:layout_marginStart="10dp"
++        android:text="Alte asteptari mai speciale" />
++
++    <EditText
++        android:id="@+id/alteAsteptari"
++        android:layout_width="match_parent"
++        android:layout_height="123dp"
++        android:ems="10"
++        android:layout_marginStart="10dp"
++        android:gravity="start|top"
++        android:inputType="textMultiLine" />
++
++    <LinearLayout
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="10dp"
++        android:orientation="horizontal">
++        <Button
++            android:id="@+id/inapoiB"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:background="@drawable/menu_button"
++            android:text="Inapoi" />
++        <LinearLayout
++            android:layout_width="100dp"
++            android:layout_height="wrap_content"
++            android:orientation="horizontal"/>
++        <Button
++            android:id="@+id/maiDeparteLaMeniuriB"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_gravity="right"
++            android:background="@drawable/menu_button"
++            android:text="Mai departe la meniuri" />
++    </LinearLayout>
++
++
++</LinearLayout>
+\ No newline at end of file

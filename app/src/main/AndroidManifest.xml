@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.agentpersonalcalatorie">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MenuActivity" />
+        <activity android:name=".FeedbackActivity" />
+        <activity android:name=".transportActivity.TransportActivity" />
+        <activity android:name=".transportActivity.TransportOptionsActivity" />
+        <activity android:name=".transportActivity.TransportRoute" />
+        <activity android:name=".shareActivity.ShareActivity" />
+        <activity android:name=".shareActivity.ShareShowMap" />
+        <activity android:name=".TripDetailsActivity"/>
+        <activity android:name=".MyTripsActivity"/>
+        <activity android:name=".SuggestionsActivity"/>
+        <activity android:name=".RestaurantActivity" />
+        <activity android:name=".Restaurant2Activity" />
+        <activity android:name=".IstoricActivity" />
+        <activity android:name=".IstoricTripsActivity" />
+        <activity android:name=".CalendarActivity" />
+        <activity android:name=".TripPlanActivity" />
+        <activity android:name=".ActivitateNouaActivity" />
+        <activity android:name=".Restaurant3Activity" />
+        <activity android:name=".Restaurant4Activity" />
+        <activity android:name=".Restaurant5Activity" />
+        <activity android:name=".Plata1Activity" />
+
+        <activity android:name=".PlataCashActivity"/>
+        <activity android:name=".PlataCard1Activity"/>
+        <activity android:name=".PlataCard2Activity"/>
+
+        <activity android:name=".ObiectiveTuristice1Activity"/>
+        <activity android:name=".ObiectiveTuristice2Activity"/>
+        <activity android:name=".ObiectiveTuristice3Activity"/>
+        <activity android:name=".ObiectiveTuristice4Activity"/>
+        <activity android:name=".MainActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDWc4vp1tKCACWDQ3df4Fl2vXZnC-dvKuo" />
+    </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+
+
+</manifest>
